@@ -22,12 +22,14 @@ Before getting started, ensure that you have the following installed on your mac
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/sopheak8888/react-native-boilerplate-with-tailwind.git
+   ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd <project_name>
+   cd react-native-boilerplate-with-tailwind
+   ```
 
 3. Install the dependencies:
 
@@ -37,6 +39,7 @@ Before getting started, ensure that you have the following installed on your mac
    
     # Using Yarn
     yarn
+    ```
 
 4. Run the application:
 
