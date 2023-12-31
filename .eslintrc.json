@@ -18,6 +18,7 @@
     "rules": {
         "max-len": "off",
         "react/react-in-jsx-scope": "off",
+        "linebreak-style": "off",
         "require-jsdoc": [
             "error",
             {
