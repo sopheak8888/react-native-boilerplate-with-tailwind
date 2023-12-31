@@ -1,11 +1,35 @@
-import {Button, SafeAreaView, StatusBar, View} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Ionicons} from '@expo/vector-icons';
 import Home from './src/screens/home';
 import Setting from './src/screens/setting';
+import RegisterButton from './src/components/headers/home/registerButton';
 
 const Tab = createBottomTabNavigator();
+
+const screens = {
+  Home: {
+    component: Home,
+    options: {
+      tabBarBadge: 3,
+      headerRight: () => (
+        <RegisterButton />
+      ),
+    },
+    icons: {
+      focused: 'home',
+      default: 'home-outline',
+    },
+  },
+  Settings: {
+    component: Setting,
+    icons: {
+      focused: 'settings',
+      default: 'settings-outline',
+    },
+  },
+};
 
 export default function App() {
   return (
@@ -15,33 +39,16 @@ export default function App() {
         <Tab.Navigator
           screenOptions={({route}) => ({
             tabBarIcon: ({focused, color, size}) => {
-              let iconName;
-              if (route.name === 'Home') {
-                iconName = focused ?
-                'home' :
-                'home-outline';
-              } else if (route.name === 'Settings') {
-                iconName = focused ? 'settings' : 'settings-outline';
-              }
+              const iconName = focused ? screens[route.name].icons.focused : screens[route.name].icons.default;
               return <Ionicons name={iconName} size={size} color={color} />;
             },
             activeTintColor: 'tomato',
             inactiveTintColor: 'gray',
           })}
         >
-          <Tab.Screen name="Home" component={Home} options={{
-            tabBarBadge: 3,
-            headerRight: () => (
-              <View className="mr-2">
-                <Button
-                  onPress={() => { /* Do something when button is pressed */ }}
-                  title="Register"
-                  color="#000"
-                />
-              </View>
-            ),
-          }} />
-          <Tab.Screen name="Settings" component={Setting} />
+          {Object.entries(screens).map(([name, {component, options}]) => (
+            <Tab.Screen key={name} name={name} component={component} options={options} />
+          ))}
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>

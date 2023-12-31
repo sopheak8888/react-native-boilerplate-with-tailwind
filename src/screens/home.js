@@ -3,7 +3,7 @@ import {View, Text, FlatList, StyleSheet} from 'react-native';
 
 const data = () => {
   const items = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 10; i++) {
     items.push({
       id: i.toString(),
       title: `Item ${i}`,
