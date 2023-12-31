@@ -1,11 +1,16 @@
 import React from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 
-const data = [
-  {id: '1', title: 'Item 1'},
-  {id: '2', title: 'Item 2'},
-  {id: '3', title: 'Item 3'},
-];
+const data = () => {
+  const items = [];
+  for (let i = 0; i < 100; i++) {
+    items.push({
+      id: i.toString(),
+      title: `Item ${i}`,
+    });
+  }
+  return items;
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -32,9 +37,8 @@ const styles = StyleSheet.create({
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
       <FlatList
-        data={data}
+        data={data()}
         keyExtractor={(item) => item.id}
         renderItem={({item}) => (
           <View style={styles.listItem}>
