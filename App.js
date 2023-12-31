@@ -13,9 +13,7 @@ const screens = {
     component: Home,
     options: {
       tabBarBadge: 3,
-      headerRight: () => (
-        <RegisterButton />
-      ),
+      headerRight: () => <RegisterButton />,
     },
     icons: {
       focused: 'home',
